@@ -1,12 +1,7 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { StepsContext } from "../context/steps";
 
-
 export const AllInformation = props => {
-
-    // useEffect(() => {
-    //     displayStep();
-    // }, []);
 
     const { step, displayStep } = useContext(StepsContext);
 

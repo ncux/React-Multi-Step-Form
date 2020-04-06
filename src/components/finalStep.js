@@ -1,6 +1,5 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { StepsContext } from "../context/steps";
-
 
 export const FinalStep = props => {
 
@@ -18,7 +17,6 @@ export const FinalStep = props => {
                <button className="Back" onClick={ previousStep }>
                    « Back
                </button>
-
         </>
     );
 

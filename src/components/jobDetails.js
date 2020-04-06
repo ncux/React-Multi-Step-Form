@@ -1,10 +1,15 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StepsContext } from "../context/steps";
-
 
 export const JobDetails = props => {
 
-    const { addJobDetails } = useContext(StepsContext);
+    useEffect(() => {
+        setPosition(information.position);
+        setCompany(information.company);
+        setLocation(information.location);
+    }, []);
+
+    const { information, addJobDetails, previousStep } = useContext(StepsContext);
 
     const [position, setPosition] = useState('');
     const [company, setCompany] = useState('');
@@ -16,9 +21,6 @@ export const JobDetails = props => {
 
         const jobDetails = { position, company, location };
         addJobDetails(jobDetails);
-        setPosition('');
-        setCompany('');
-        setLocation('');
     };
 
     return (
@@ -39,8 +41,12 @@ export const JobDetails = props => {
                     Location
                     <input onChange={ event => setLocation(event.target.value) } type="text" value={ location } />
                 </label>
-                <button type="submit" className="btn">Next</button>
+                <button type="submit" className="Next »">Next</button>
             </form>
+
+            <button className="Back" onClick={ previousStep }>
+                « Back
+            </button>
         </>
     );
 

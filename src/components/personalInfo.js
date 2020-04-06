@@ -1,10 +1,14 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { StepsContext } from "../context/steps";
-
 
 export const PersonalInfo = props => {
 
-    const { addPersonalInfo } = useContext(StepsContext);
+    useEffect(() => {
+        setFirstName(information.firstName);
+        setLastName(information.lastName);
+    }, []);
+
+    const { information, addPersonalInfo  } = useContext(StepsContext);
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -15,8 +19,6 @@ export const PersonalInfo = props => {
 
         const personalInfo = { firstName, lastName };
         addPersonalInfo(personalInfo);
-        setFirstName('');
-        setLastName('');
     };
 
     return (
@@ -32,7 +34,7 @@ export const PersonalInfo = props => {
                     Last name
                     <input onChange={ event => setLastName(event.target.value) } type="text" value={ lastName } />
                 </label>
-                <button type="submit" className="btn">Next</button>
+                <button type="submit" className="Next »">Next</button>
             </form>
         </>
     );
